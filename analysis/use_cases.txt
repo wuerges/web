@@ -1,0 +1,14 @@
+
+
+A : Add person
+QRCode : Load Items from QRCode and creates a set, and goes to the share screen
+URI : Load Items from URI and creates a set, and goes to the share screen
+Q : Split set and items equaly in n sets
+S : Separate an item from a set into a new set
+P : Pay for a set
+U : Forms a new set from the union of 2 sets
+B : Goes back to the share screen.
+M : Goes to the payment screen.
+
+
+

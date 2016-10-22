@@ -1,0 +1,13 @@
+digraph U {
+  Start
+  Share
+  Payment
+
+  Start -> Share [label="QRCode,URI"]
+  Share -> Start [label="R"]
+  Share -> Share [label="U,A,S,Q"]
+  Share -> Payment [label="M"]
+  Payment -> Share [label="B"]
+  Payment -> Payment [label="P"]
+  
+}
