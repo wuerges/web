@@ -1,5 +1,6 @@
 
 
+Clear : Clear everything and start from scratch
 A : Add person
 QRCode : Load Items from QRCode and creates a set, and goes to the share screen
 URI : Load Items from URI and creates a set, and goes to the share screen

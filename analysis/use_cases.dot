@@ -3,6 +3,7 @@ digraph U {
   Share
   Payment
 
+  Start -> Start [label="Clear"]
   Start -> Share [label="QRCode,URI"]
   Share -> Start [label="R"]
   Share -> Share [label="U,A,S,Q"]

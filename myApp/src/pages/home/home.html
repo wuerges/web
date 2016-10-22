@@ -5,13 +5,18 @@
 </ion-header>
 
 <ion-content padding>
-  <h2>Welcome to Ionic!</h2>
-  <p>
-    This starter project comes with simple tabs-based layout for apps
-    that are going to primarily use a Tabbed UI.
+  <h2>Welcome to TabSplit</h2>
+  <p> 
+  This app makes spliting a tab with your friends very easy.
   </p>
-  <p>
-    Take a look at the <code>src/pages/</code> directory to add or change tabs,
-    update any existing page or create new pages.
-  </p>
+  <button ion-button outline>Load Items from QRCode</button>
+  <button ion-button outline>Load Items from URI</button>
+  <button ion-button color="danger" outline>Clear everything and Start Over</button>
+
+  <ion-item>
+    <ion-badge>0</ion-badge> Friends 
+  </ion-item>
+  <ion-item>
+    <ion-badge>0</ion-badge> Items
+  </ion-item>
 </ion-content>
