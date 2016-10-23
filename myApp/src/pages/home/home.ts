@@ -8,17 +8,33 @@ import { AboutPage } from '../about/about';
   templateUrl: 'home.html'
 })
 export class HomePage {
-data : Array<{name: string, price:number, quantity: number}>;
+  name : string;
+  iname : string;
+  iprice : number;
+  iqty : number;
+  items : Array<{name: string, price:number, quantity: number}>;
+  friends : Array<string>;
+
+
   constructor(public navCtrl: NavController) {
-    this.data = [];
-    this.data.push({name:"Cerveja", price:10.0, quantity: 2.5});
+    this.friends = ["me"];
+    this.items = [
+      {name:"Cerveja", price:10.0, quantity: 2.5},
+      {name:"Bolinho", price:5.0, quantity: 12.5}
+    ];
   }
 
   loadItems() {
-    this.navCtrl.push(AboutPage, this.data);
+    //this.navCtrl.push(AboutPage, this.data);
   }
+
   clearItems() {
-    this.data = [];
-    this.loadItems();
+    this.friends = [];
+    this.items   = [];
   }
+
+  addPerson() {
+    this.friends.push(this.name);
+  }
+
 }
