@@ -25,7 +25,10 @@ export class HomePage {
   }
 
   loadItems() {
-    //this.navCtrl.push(AboutPage, this.data);
+    this.navCtrl.push(AboutPage, 
+      { friends: this.friends
+      , items:   this.items }
+    );
   }
 
   clearItems() {
