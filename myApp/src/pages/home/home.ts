@@ -17,7 +17,7 @@ export class HomePage {
 
 
   constructor(public navCtrl: NavController) {
-    this.friends = ["me"];
+    this.clearItems();
     this.items = [
       {name:"Cerveja", price:10.0, quantity: 2.5},
       {name:"Bolinho", price:5.0, quantity: 12.5}
@@ -29,12 +29,25 @@ export class HomePage {
   }
 
   clearItems() {
-    this.friends = [];
-    this.items   = [];
+    this.friends = ["me"];
+    // this.items   = [];
+    this.items = [
+      {name:"Cerveja", price:10.0, quantity: 2.5},
+      {name:"Bolinho", price:5.0, quantity: 12.5}
+    ];
   }
 
-  addPerson() {
+  addFriend() {
     this.friends.push(this.name);
+    console.log(this.name);
+  }
+
+  addItem() {
+    this.items.push(
+      { name: this.iname
+      , price: this.iprice
+      , quantity: this.iqty }
+    );
   }
 
 }
