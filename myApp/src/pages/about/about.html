@@ -7,29 +7,38 @@
 </ion-header>
 
 <ion-content padding>
-  <ion-list>
-    <ion-item>
-      <ion-input type="text" value="{{name}}" placeholder="Name"></ion-input>
-    </ion-item>
-  </ion-list>
-  <button ion-button outline>Add Person</button>
-  <ion-list>
-    <ion-item>
-      <ion-input type="text" value="{{iname}}" placeholder="Name"></ion-input>
-      <ion-input type="number" value="{{iprice}}" placeholder="Price"></ion-input>
-      <ion-input type="number" value="{{iqty}}" placeholder="Quantity"></ion-input>
-    </ion-item>
-  </ion-list>
-  <button ion-button outline>Add Person</button>
-
-
-  <ion-card *ngFor="let p of people">
+  <ion-card *ngFor="let p of friends">
     <ion-card-header>
-      <button ion-button outline>{{p.name}}</button>
+      <button ion-button outline block
+        (click)="sendItemToFriend(p)">
+        {{p.name}}
+      </button>
     </ion-card-header>
     <ion-card-content>
+        <ion-card>
+          <ion-card-header>Total</ion-card-header>
+          <ion-card-content>
+            ${{total(p)}}
+          </ion-card-content>
+        </ion-card>
         <ion-card *ngFor="let i of p.items">
-          {{i}}
+          <ion-card-header>
+            {{i.name}}
+          </ion-card-header>
+          <ion-card-content>
+            <ion-badge item-right color="danger">
+              ${{(i.price * i.quantity) - (i.price * i.quantity * i.qty_s / 100)}}
+            </ion-badge>
+            <ion-badge item-right color="danger">
+              #{{i.quantity - (i.quantity * i.qty_s / 100)}}
+            </ion-badge>
+            <ion-range 
+              [(ngModel)]="i.qty_s">
+              <ion-label range-left>0</ion-label>
+              <ion-label range-right>{{i.quantity}}</ion-label>
+            </ion-range>
+
+          </ion-card-content>
         </ion-card>
     </ion-card-content>
   </ion-card>
@@ -39,11 +48,17 @@
     </ion-card-header>
     <ion-card-content>
       <ion-badge item-right>
-        ${{i.price}}
+        ${{i.price * i.quantity * i.qty_s / 100}}
       </ion-badge>
       <ion-badge item-right>
-        #{{i.quantity}}
+        #{{i.quantity * i.qty_s / 100}}
       </ion-badge>
+      <ion-range 
+        [(ngModel)]="i.qty_s">
+        <ion-label range-left>0</ion-label>
+        <ion-label range-right>{{i.quantity}}</ion-label>
+      </ion-range>
+
     </ion-card-content>
   </ion-card>
 </ion-content>

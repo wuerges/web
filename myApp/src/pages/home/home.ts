@@ -12,19 +12,15 @@ export class HomePage {
   iname : string;
   iprice : number;
   iqty : number;
-  items : Array<{name: string, price:number, quantity: number}>;
+  items : Array<{name: string, price:number, quantity: number, qty_s: number}>;
   friends : Array<string>;
 
 
   constructor(public navCtrl: NavController) {
     this.clearItems();
-    this.items = [
-      {name:"Cerveja", price:10.0, quantity: 2.5},
-      {name:"Bolinho", price:5.0, quantity: 12.5}
-    ];
   }
 
-  loadItems() {
+  goToSharePage() {
     this.navCtrl.push(AboutPage, 
       { friends: this.friends
       , items:   this.items }
@@ -35,8 +31,8 @@ export class HomePage {
     this.friends = ["me"];
     // this.items   = [];
     this.items = [
-      {name:"Cerveja", price:10.0, quantity: 2.5},
-      {name:"Bolinho", price:5.0, quantity: 12.5}
+      {name:"Cerveja", price:10.0, quantity: 2.5, qty_s: 0},
+      {name:"Bolinho", price:5.0, quantity: 12.5, qty_s: 0}
     ];
   }
 
@@ -49,7 +45,8 @@ export class HomePage {
     this.items.push(
       { name: this.iname
       , price: this.iprice
-      , quantity: this.iqty }
+      , quantity: this.iqty
+      , qty_s: 0 }
     );
   }
 
