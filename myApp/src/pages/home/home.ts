@@ -32,11 +32,12 @@ export class HomePage {
 
   clearItems() {
     this.friends = ["me"];
-    //this.items   = [];
-    this.items = [
+    this.items   = [];
+    /*this.items = [
       {name:"Cerveja", price:10.0, quantity: 2.5, qty_s: 0},
       {name:"Bolinho", price:5.0, quantity: 12.5, qty_s: 0}
     ];
+    */
   }
 
   addFriend() {
