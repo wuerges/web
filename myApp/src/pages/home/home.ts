@@ -12,29 +12,31 @@ export class HomePage {
   iname : string;
   iprice : number;
   iqty : number;
+  tip : number;
   items : Array<{name: string, price:number, quantity: number, qty_s: number}>;
   friends : Array<string>;
 
 
   constructor(public navCtrl: NavController) {
+    this.tip = 0;
     this.clearItems();
   }
 
   goToSharePage() {
     this.navCtrl.push(AboutPage, 
       { friends: this.friends
-      , items:   this.items }
+      , items:   this.items
+      , tip:   this.tip }
     );
   }
 
   clearItems() {
     this.friends = ["me"];
-    this.items   = [];
-    /*this.items = [
+    //this.items   = [];
+    this.items = [
       {name:"Cerveja", price:10.0, quantity: 2.5, qty_s: 0},
       {name:"Bolinho", price:5.0, quantity: 12.5, qty_s: 0}
     ];
-    */
   }
 
   addFriend() {

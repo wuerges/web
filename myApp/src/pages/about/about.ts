@@ -21,6 +21,11 @@ export class AboutPage {
       this.friends.push({name: f, items: []});
     }
     this.items = navParams.data.items;
+    this.items.push(
+      { name: "Tip"
+      , price: navParams.data.tip
+      , quantity: 1
+      , qty_s: 0 });
   }
 
   total(f): number {

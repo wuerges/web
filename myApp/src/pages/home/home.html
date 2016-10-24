@@ -14,65 +14,93 @@
   -->
   <button ion-button color="danger" outline block (click)="clearItems()">Clear everything and Start Over</button>
 
-  <p> 
-    Add friends manually:
-  </p>
+  <ion-card>
+    <ion-card-header>
+      <h2> 
+        Add friends:
+      </h2>
 
-  <ion-list>
-    <ion-item>
-      <ion-input type="text" 
-        [(ngModel)]="name" 
-        placeholder="Name"></ion-input>
-    </ion-item>
-  </ion-list>
-  <button ion-button outline block
-    (click)="addFriend()">Add Friend</button>
+      <ion-list>
+        <ion-item>
+          <ion-input type="text" 
+            [(ngModel)]="name" 
+            placeholder="Name"></ion-input>
+        </ion-item>
+      </ion-list>
+      <button ion-button outline block
+        (click)="addFriend()">Add Friend</button>
 
-  <p> 
-    Add items manually:
-  </p>
+    </ion-card-header>
+    <ion-card-content>
+      <ion-item>
+        <ion-badge>{{friends.length}}</ion-badge> Friends 
+      </ion-item>
+      <ion-list>
+        <ion-item *ngFor="let f of friends">
+          {{f}}
+        </ion-item>
+      </ion-list>
+    </ion-card-content>
+  </ion-card>
 
-  <ion-list>
-    <ion-item>
-      <ion-input type="text" 
-        [(ngModel)]="iname" 
-        placeholder="Name"></ion-input>
-      <ion-input type="number" 
-        [(ngModel)]="iprice" 
-        placeholder="Price"></ion-input>
-      <ion-input type="number" 
-        [(ngModel)]="iqty" 
-        placeholder="Quantity"></ion-input>
-    </ion-item>
-  </ion-list>
+  <ion-card>
+    <ion-card-header>
+    <p> 
+      Add items:
+    </p>
+
+    <ion-list>
+      <ion-item>
+        <ion-input type="text" 
+          [(ngModel)]="iname" 
+          placeholder="Name"></ion-input>
+        <ion-input type="number" 
+          [(ngModel)]="iprice" 
+          placeholder="Price"></ion-input>
+        <ion-input type="number" 
+          [(ngModel)]="iqty" 
+          placeholder="Quantity"></ion-input>
+      </ion-item>
+    </ion-list>
+    <button ion-button outline block 
+      (click)="addItem()">Add Item</button>
+    </ion-card-header>
+    <ion-card-content>
+      <ion-item>
+        <ion-badge>{{items.length}}</ion-badge> Items
+      </ion-item>
+      <ion-list>
+        <ion-item *ngFor="let i of items">
+          {{i.name}}
+          <ion-badge item-right>
+            ${{i.price}}
+          </ion-badge>
+          <ion-badge item-right>
+            #{{i.quantity}}
+          </ion-badge>
+        </ion-item>
+      </ion-list>
+    </ion-card-content>
+  </ion-card>
+
+  <ion-card>
+    <ion-card-header>
+      <ion-item>
+        Tip
+        <ion-badge item-right>
+          {{tip}}%
+        </ion-badge>
+      </ion-item>
+    </ion-card-header>
+    <ion-card-content>
+      <ion-range 
+        [(ngModel)]="tip">
+        <ion-label range-left>0%</ion-label>
+        <ion-label range-right>100%</ion-label>
+      </ion-range>
+    </ion-card-content>
+  </ion-card>
+
   <button ion-button outline block 
-    (click)="addItem()">Add Item</button>
-
-    <ion-item>
-      <ion-badge>{{friends.length}}</ion-badge> Friends 
-    </ion-item>
-    <ion-item>
-      <ion-badge>{{items.length}}</ion-badge> Items
-    </ion-item>
-
-    <h2> Friends: </h2>
-  <ion-list>
-    <ion-item *ngFor="let f of friends">
-      {{f}}
-    </ion-item>
-  </ion-list>
-    <h2> Items: </h2>
-  <ion-list>
-    <ion-item *ngFor="let i of items">
-      {{i.name}}
-      <ion-badge item-right>
-        ${{i.price}}
-      </ion-badge>
-      <ion-badge item-right>
-        #{{i.quantity}}
-      </ion-badge>
-    </ion-item>
-  </ion-list>
-  <button ion-button outline block 
-    (click)="goToSharePage()">Start Sharing</button>
+          (click)="goToSharePage()">Start Sharing</button>
 </ion-content>
