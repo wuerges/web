@@ -1,6 +1,6 @@
 {
-  "name": "ionic-hello-world",
-  "author": "Ionic Framework",
+  "name": "tab-split",
+  "author": "Emilio Wuerges",
   "homepage": "http://ionicframework.com/",
   "private": true,
   "scripts": {
@@ -33,7 +33,7 @@
     "@ionic/app-scripts": "^0.0.36",
     "typescript": "^2.0.3"
   },
-  "description": "myApp: An Ionic project",
+  "description": "TabSplit: Split your tab with your friends",
   "cordovaPlugins": [
     "cordova-plugin-device",
     "cordova-plugin-console",
