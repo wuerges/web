@@ -40,6 +40,17 @@ export class AboutPage {
     // TODO
   }
 
+  splitEqually(i : Item) {
+    let qt = i.quantity / this.friends.length;
+
+    for (let f of this.friends) {
+      f.items.push({name: i.name, price: i.price, quantity: qt, qty_s: 0});
+    }
+    i.quantity = 0;
+    
+    this.items = this.items.filter(i => i.quantity > 0);
+  }
+
   transfer(i, f) {
     let s = i.quantity * i.qty_s / 100;
     i.qty_s = 0;

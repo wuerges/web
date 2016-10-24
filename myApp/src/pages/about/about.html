@@ -59,6 +59,9 @@
         <ion-label range-right>{{i.quantity}}</ion-label>
       </ion-range>
 
+      <button ion-button outline block (click)="splitEqually(i)">
+        Split equally
+      </button>
     </ion-card-content>
   </ion-card>
 </ion-content>
