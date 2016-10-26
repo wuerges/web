@@ -33,11 +33,11 @@
     </ion-card-header>
     <ion-card-content>
       <ion-item>
-        <ion-badge>{{friends.length}}</ion-badge> Friends 
+        <ion-badge>{{appState.friends.length}}</ion-badge> Friends 
       </ion-item>
       <ion-list>
-        <ion-item *ngFor="let f of friends">
-          {{f}}
+        <ion-item *ngFor="let f of appState.friends">
+          {{f.name}}
         </ion-item>
       </ion-list>
     </ion-card-content>
@@ -67,10 +67,13 @@
     </ion-card-header>
     <ion-card-content>
       <ion-item>
-        <ion-badge>{{items.length}}</ion-badge> Items
+        <ion-badge>{{appState.unassigned.length}}</ion-badge> Items
       </ion-item>
       <ion-list>
-        <ion-item *ngFor="let i of items">
+        <ion-item *ngFor="let i of appState.unassigned">
+          <button ion-button (click)="decrease(i)">
+            -
+          </button>
           {{i.name}}
           <ion-badge item-right>
             ${{i.price}}
@@ -78,6 +81,10 @@
           <ion-badge item-right>
             #{{i.quantity}}
           </ion-badge>
+          <button ion-button 
+            item-right (click)="increase(i)">
+            +
+          </button>
         </ion-item>
       </ion-list>
     </ion-card-content>

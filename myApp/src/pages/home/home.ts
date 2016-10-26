@@ -1,57 +1,53 @@
 import { Component } from '@angular/core';
 
-import { NavController } from 'ionic-angular';
-import { AboutPage } from '../about/about';
+import { NavController  } from 'ionic-angular';
+import { AboutPage      } from '../about/about';
+import { AppState, Item } from '../../model/model';
 
 @Component({
   selector: 'page-home',
   templateUrl: 'home.html'
 })
 export class HomePage {
-  name : string;
-  iname : string;
-  iprice : number;
-  iqty : number;
-  tip : number;
-  items : Array<{name: string, price:number, quantity: number, qty_s: number}>;
-  friends : Array<string>;
+  /**
+   * Controller variables used in the view
+   */
+  name    : string;
+  iname   : string;
+  iprice  : number;
+  iqty    : number;
+  tip     : number;
 
+  appState : AppState;
 
   constructor(public navCtrl: NavController) {
-    this.tip = 0;
+    this.tip = 10;
     this.clearItems();
   }
 
   goToSharePage() {
-    this.navCtrl.push(AboutPage, 
-      { friends: this.friends
-      , items:   this.items
-      , tip:   this.tip }
-    );
+    this.navCtrl.push(AboutPage, {appState: this.appState, tip:  this.tip});
   }
 
   clearItems() {
-    this.friends = ["me"];
-    this.items   = [];
-    /*this.items = [
-      {name:"Cerveja", price:10.0, quantity: 2.5, qty_s: 0},
-      {name:"Bolinho", price:5.0, quantity: 12.5, qty_s: 0}
-    ];
-    */
+    this.appState = new AppState();
   }
 
   addFriend() {
-    this.friends.push(this.name);
-    console.log(this.name);
+    this.appState.addFriend(this.name);
   }
 
   addItem() {
-    this.items.push(
-      { name: this.iname
-      , price: this.iprice
-      , quantity: this.iqty
-      , qty_s: 0 }
-    );
+    this.appState.addItem(this.iname, this.iprice, this.iqty);
+  }
+
+  increase(i : Item) {
+    i.quantity++;
+  }
+
+  decrease(i : Item) {
+    if (i.quantity > 0)
+      i.quantity--;
   }
 
 }
