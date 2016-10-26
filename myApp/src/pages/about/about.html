@@ -23,7 +23,7 @@
         </ion-card>
         <ion-card *ngFor="let i of p.items">
           <ion-card-header>
-            #{{i.name}}
+            {{i.name}}
           </ion-card-header>
           <ion-card-content>
             <ion-badge item-right color="danger">
@@ -63,4 +63,10 @@
       </button>
     </ion-card-content>
   </ion-card>
+
+  <button ion-button block 
+    color="secondary"
+    (click)="goToPaymentPage()">
+    Pay your Tab
+  </button>
 </ion-content>

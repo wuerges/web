@@ -1,6 +1,8 @@
 import { Component } from '@angular/core';
 
-import { NavController } from 'ionic-angular';
+import { NavController, NavParams } from 'ionic-angular';
+import { AppState, Friend         } from '../../model/model';
+
 
 @Component({
   selector: 'page-contact',
@@ -8,8 +10,18 @@ import { NavController } from 'ionic-angular';
 })
 export class ContactPage {
 
-  constructor(public navCtrl: NavController) {
+  appState : AppState;
 
+  constructor(public navCtrl: NavController, navParams: NavParams) {
+    this.appState = navParams.data.appState;
   }
 
+
+  payFor(f : Friend) {
+    this.appState.payFor(f);
+  }
+
+  unpayFor(f : Friend) {
+    this.appState.unpayFor(f);
+  }
 }

@@ -63,10 +63,10 @@ export class Friend {
         return;
       }
     }
-    console.log("tried to add item:" 
-                + name + " "
-                + price + " "
-                + qty);
+    //console.log("tried to add item:" 
+    //            + name + " "
+    //            + price + " "
+    //            + qty);
     this.items.push(
       new Item(name, price, qty, 0));
   }
@@ -82,15 +82,14 @@ export class AppState {
     this.friends    = [new Friend("me")];
     this.paid       = [];
     this.unassigned = [];
+
+    this.friends[0].addItem("T1", 1, 2);
+    this.friends[0].addItem("T2", 1, 2);
   }
 
   addFriend(name : string) {
     if(!name) return;
-    for(let f of this.friends) {
-      if (f.name == name)
-        return;
-    }
-    this.friends.push(new Friend(name))
+    this.getFriendOrAdd(this.friends, name);
   }
 
   addItem(name, price, qty) {
@@ -152,5 +151,39 @@ export class AppState {
 
   }
 
+  getFriendOrAdd(fs : Array<Friend>, name : string) {
+    for(let f of fs) {
+      if (f.name == name)
+        return f;
+    }
+    let f = new Friend(name)
+    fs.push(f);
+    return f;
+  }
+
+  transferAll(f : Friend, p : Friend) {
+    for(let i of f.items) {
+      p.addItem(i.name, i.price, i.quantity);
+    }
+    f.items = []
+  }
+
+  clearEmptyFriends() {
+    this.friends = 
+      this.friends.filter(f => f.total() > 0);
+    this.paid = 
+      this.paid.filter(f => f.total() > 0);
+  }
+
+  payFor(f : Friend) {
+    let p = this.getFriendOrAdd(this.paid, f.name);
+    this.transferAll(f, p);
+    this.clearEmptyFriends();
+  }
+  unpayFor(f : Friend) {
+    let p = this.getFriendOrAdd(this.friends, f.name);
+    this.transferAll(f, p);
+    this.clearEmptyFriends();
+  }
 
 }

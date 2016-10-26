@@ -1,7 +1,9 @@
 import { Component } from '@angular/core';
 
 import { NavController, NavParams } from 'ionic-angular';
-import { AppState, Item } from '../../model/model';
+
+import { ContactPage              } from '../contact/contact';
+import { AppState, Item           } from '../../model/model';
 
 @Component({
   selector: 'page-about',
@@ -25,4 +27,9 @@ export class AboutPage {
   sendItemToFriend(f) {
     this.appState.sendItemToFriend(f);
   }
+
+  goToPaymentPage() {
+    this.navCtrl.push(ContactPage, {appState: this.appState});
+  }
+
 }
