@@ -2,8 +2,8 @@ import { Component } from '@angular/core';
 
 import { NavController, NavParams } from 'ionic-angular';
 
-type Item = {name: string, price:number, quantity: number, qty_s: number};
-type Person = {name: string, items: Array<Item>};
+export type Item = {name: string, price:number, quantity: number, qty_s: number};
+export type Person = {name: string, items: Array<Item>};
 
 @Component({
   selector: 'page-about',
