@@ -7,7 +7,7 @@
 </ion-header>
 
 <ion-content padding>
-  <ion-card *ngFor="let p of friends">
+  <ion-card *ngFor="let p of appState.friends">
     <ion-card-header>
       <button ion-button outline block
         (click)="sendItemToFriend(p)">
@@ -18,43 +18,42 @@
         <ion-card>
           <ion-card-header>Total</ion-card-header>
           <ion-card-content>
-            ${{total(p)}}
+            ${{p.total()}}
           </ion-card-content>
         </ion-card>
         <ion-card *ngFor="let i of p.items">
           <ion-card-header>
-            {{i.name}}
+            #{{i.name}}
           </ion-card-header>
           <ion-card-content>
             <ion-badge item-right color="danger">
-              ${{(i.price * i.quantity) - (i.price * i.quantity * i.qty_s / 100)}}
+              ${{i.priceRemSh()}}
             </ion-badge>
             <ion-badge item-right color="danger">
-              #{{i.quantity - (i.quantity * i.qty_s / 100)}}
+              #{{i.quantityRemSh()}}
             </ion-badge>
             <ion-range 
-              [(ngModel)]="i.qty_s">
+              [(ngModel)]="i.quantity_set">
               <ion-label range-left>0</ion-label>
               <ion-label range-right>{{i.quantity}}</ion-label>
             </ion-range>
-
           </ion-card-content>
         </ion-card>
     </ion-card-content>
   </ion-card>
-  <ion-card *ngFor="let i of items">
+  <ion-card *ngFor="let i of appState.unassigned">
     <ion-card-header>
       {{i.name}}
     </ion-card-header>
     <ion-card-content>
       <ion-badge item-right>
-        ${{i.price * i.quantity * i.qty_s / 100}}
+        ${{i.priceSh()}}
       </ion-badge>
       <ion-badge item-right>
-        #{{i.quantity * i.qty_s / 100}}
+        ${{i.quantitySh()}}
       </ion-badge>
       <ion-range 
-        [(ngModel)]="i.qty_s">
+        [(ngModel)]="i.quantity_set">
         <ion-label range-left>0</ion-label>
         <ion-label range-right>{{i.quantity}}</ion-label>
       </ion-range>
