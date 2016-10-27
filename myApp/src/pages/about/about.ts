@@ -31,9 +31,4 @@ export class AboutPage {
     this.navCtrl.push(ContactPage, {appState: this.appState});
   }
 
-  round(n) {
-    let r = (n * 100) % 1;
-    return (n * 100 - r) / 100;
-  }
-
 }

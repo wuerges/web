@@ -17,24 +17,38 @@ export class Item {
   }
 
   priceSh() {
-    return this.price * this.quantity 
-      * this.quantity_set / 100;
-  }
-  quantitySh() {
-    return this.quantity 
-      * this.quantity_set / 100;
+    return (this.price * this.quantity 
+      * this.quantity_set / 100).toFixed(2);
   }
 
   priceRemSh() {
-    return (this.price * this.quantity) - 
+    return ((this.price * this.quantity) - 
       (this.price * this.quantity 
-       * this.quantity_set / 100);
+       * this.quantity_set / 100)).toFixed(2);
+  }
+
+  quantitySh() {
+    return this.round(this.quantity 
+      * this.quantity_set / 100);
   }
 
   quantityRemSh() {
-    return this.quantity - 
+    return this.round(this.quantity - 
       (this.quantity 
-       * this.quantity_set / 100)
+       * this.quantity_set / 100));
+  }
+
+  percentageSh() {
+    return this.round(this.quantity_set);
+  }
+
+  percentageRemSh() {
+    return this.round(100 - this.quantity_set);
+  }
+
+  round(n) {
+    let r = (n * 100) % 1;
+    return (n * 100 - r) / 100;
   }
 
   increase_set() {
