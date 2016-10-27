@@ -117,8 +117,8 @@ export class AppState {
     this.paid       = [];
     this.unassigned = [];
 
-    this.friends[0].addItem("T1", 1, 2);
-    this.friends[0].addItem("T2", 1, 2);
+    //this.friends[0].addItem("T1", 1, 2);
+    //this.friends[0].addItem("T2", 1, 2);
   }
 
   addFriend(name : string) {
