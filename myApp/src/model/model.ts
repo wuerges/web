@@ -36,6 +36,40 @@ export class Item {
       (this.quantity 
        * this.quantity_set / 100)
   }
+
+  increase_set() {
+    let s = 100 / this.quantity;
+    if(this.name == "Tip") {
+      s = 5;
+    }
+
+    if (this.quantity_set < 100)
+      this.quantity_set += s;
+    if (this.quantity_set > 100)
+      this.quantity_set = 100;
+  }
+
+  decrease_set() {
+    let s = 100 / this.quantity;
+    if(this.name == "Tip") {
+      s = 5;
+    }
+
+    if (this.quantity_set > 0)
+      this.quantity_set -= s;
+    if (this.quantity_set < 0)
+      this.quantity_set = 0;
+  }
+  increase() {
+    this.quantity++;
+  }
+
+  decrease() {
+    if (this.quantity > 0)
+      this.quantity--;
+  }
+
+
 }
 
 export class Friend {

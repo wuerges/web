@@ -32,11 +32,24 @@
             <ion-badge item-right color="danger">
               #{{i.quantityRemSh()}}
             </ion-badge>
+            <ion-badge item-right color="danger">
+              %{{i.quantity_set}}
+            </ion-badge>
             <ion-range 
               [(ngModel)]="i.quantity_set">
-              <ion-label range-left>0</ion-label>
+              <ion-label range-left>
+                0
+              </ion-label>
               <ion-label range-right>{{i.quantity}}</ion-label>
             </ion-range>
+            <button ion-button 
+              (click)="i.decrease_set()">
+              -
+            </button>
+            <button ion-button 
+              (click)="i.increase_set()">
+              +
+            </button>
           </ion-card-content>
         </ion-card>
     </ion-card-content>
@@ -50,13 +63,22 @@
         ${{i.priceSh()}}
       </ion-badge>
       <ion-badge item-right>
-        ${{i.quantitySh()}}
+        #{{i.quantitySh()}}
+      </ion-badge>
+      <ion-badge item-right>
+        %{{i.quantity_set}}
       </ion-badge>
       <ion-range 
         [(ngModel)]="i.quantity_set">
         <ion-label range-left>0</ion-label>
         <ion-label range-right>{{i.quantity}}</ion-label>
       </ion-range>
+      <button ion-button (click)="i.decrease_set()">
+        -
+      </button>
+      <button ion-button (click)="i.increase_set()">
+        +
+      </button>
 
       <button ion-button outline block (click)="splitEqually(i)">
         Split equally

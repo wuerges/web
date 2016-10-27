@@ -41,13 +41,4 @@ export class HomePage {
     this.appState.addItem(this.iname, this.iprice, this.iqty);
   }
 
-  increase(i : Item) {
-    i.quantity++;
-  }
-
-  decrease(i : Item) {
-    if (i.quantity > 0)
-      i.quantity--;
-  }
-
 }

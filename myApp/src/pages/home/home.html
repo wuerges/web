@@ -71,7 +71,7 @@
       </ion-item>
       <ion-list>
         <ion-item *ngFor="let i of appState.unassigned">
-          <button ion-button (click)="decrease(i)">
+          <button ion-button (click)="i.decrease()">
             -
           </button>
           {{i.name}}
@@ -82,7 +82,7 @@
             #{{i.quantity}}
           </ion-badge>
           <button ion-button 
-            item-right (click)="increase(i)">
+            item-right (click)="i.increase()">
             +
           </button>
         </ion-item>
@@ -100,11 +100,20 @@
       </ion-item>
     </ion-card-header>
     <ion-card-content>
-      <ion-range 
+      <ion-range max="25"
         [(ngModel)]="tip">
         <ion-label range-left>0%</ion-label>
-        <ion-label range-right>100%</ion-label>
+        <ion-label range-right>25%</ion-label>
       </ion-range>
+      <button ion-button 
+        (click)="tip = 10">10%
+      </button>
+      <button ion-button 
+        (click)="tip = 12">12%
+      </button>
+      <button ion-button 
+        (click)="tip = 15">15%
+      </button>
     </ion-card-content>
   </ion-card>
 
