@@ -27,13 +27,13 @@
           </ion-card-header>
           <ion-card-content>
             <ion-badge item-right color="danger">
-              ${{i.priceRemSh()}}
+              ${{i.priceRemSh().toFixed(2)}}
             </ion-badge>
             <ion-badge item-right color="danger">
-              #{{i.quantityRemSh()}}
+              #{{round(i.quantityRemSh())}}
             </ion-badge>
             <ion-badge item-right color="danger">
-              %{{i.quantity_set}}
+              %{{round(i.quantity_set)}}
             </ion-badge>
             <ion-range 
               [(ngModel)]="i.quantity_set">
@@ -60,13 +60,13 @@
     </ion-card-header>
     <ion-card-content>
       <ion-badge item-right>
-        ${{i.priceSh()}}
+        ${{i.priceSh().toFixed(2)}}
       </ion-badge>
       <ion-badge item-right>
-        #{{i.quantitySh()}}
+        #{{round(i.quantitySh())}}
       </ion-badge>
       <ion-badge item-right>
-        %{{i.quantity_set}}
+        %{{round(i.quantity_set)}}
       </ion-badge>
       <ion-range 
         [(ngModel)]="i.quantity_set">

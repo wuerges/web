@@ -202,22 +202,46 @@ export class AppState {
     f.items = []
   }
 
+  nonEmptyPaid() : Array<Friend> {
+    return this.paid.filter(f => f.total() > 0);
+  }
+
+  nonEmptyFriends() : Array<Friend> {
+    return this.friends.filter(f => f.total() > 0);
+  }
+
+  nonTipItems() : Array<Item> {
+    return this.unassigned.filter(i => i.name != "Tip");
+  }
+
+  /*
   clearEmptyFriends() {
     this.friends = 
       this.friends.filter(f => f.total() > 0);
     this.paid = 
       this.paid.filter(f => f.total() > 0);
   }
+  */
 
   payFor(f : Friend) {
     let p = this.getFriendOrAdd(this.paid, f.name);
     this.transferAll(f, p);
-    this.clearEmptyFriends();
+    //this.clearEmptyFriends();
   }
   unpayFor(f : Friend) {
     let p = this.getFriendOrAdd(this.friends, f.name);
     this.transferAll(f, p);
-    this.clearEmptyFriends();
+    //this.clearEmptyFriends();
   }
 
+
+  accountForTip(tip : number) {
+    let t = 0;
+    for(let i of this.unassigned) {
+      if (i.name != "Tip" && i.name != "Tax") {
+        t += i.price * i.quantity;
+      }
+    }
+    this.addItem("Tip", t, 1);
+  }
 }

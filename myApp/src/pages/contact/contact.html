@@ -7,7 +7,7 @@
 </ion-header>
 <ion-content>
 
-  <ion-card *ngFor="let p of appState.friends">
+  <ion-card *ngFor="let p of appState.nonEmptyFriends()">
     <ion-card-header>
       <button ion-button outline block
         (click)="payFor(p)"
@@ -38,7 +38,7 @@
     </ion-card-content>
   </ion-card>
 
-  <ion-card *ngFor="let p of appState.paid">
+  <ion-card *ngFor="let p of appState.nonEmptyPaid()">
     <ion-card-header>
       <button ion-button outline block
         (click)="unpayFor(p)"

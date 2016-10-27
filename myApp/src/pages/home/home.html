@@ -67,10 +67,10 @@
     </ion-card-header>
     <ion-card-content>
       <ion-item>
-        <ion-badge>{{appState.unassigned.length}}</ion-badge> Items
+        <ion-badge>{{appState.nonTipItems().length}}</ion-badge> Items
       </ion-item>
       <ion-list>
-        <ion-item *ngFor="let i of appState.unassigned">
+        <ion-item *ngFor="let i of appState.nonTipItems()">
           <button ion-button (click)="i.decrease()">
             -
           </button>

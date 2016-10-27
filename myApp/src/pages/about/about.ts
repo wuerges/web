@@ -16,8 +16,7 @@ export class AboutPage {
   constructor(public navCtrl: NavController, navParams: NavParams) {
 
     this.appState = navParams.data.appState;
-    this.appState.addItem(
-      "Tip", navParams.data.tip, 1);
+    this.appState.accountForTip(navParams.data.tip);
   }
 
   splitEqually(i : Item) {
@@ -30,6 +29,11 @@ export class AboutPage {
 
   goToPaymentPage() {
     this.navCtrl.push(ContactPage, {appState: this.appState});
+  }
+
+  round(n) {
+    let r = (n * 100) % 1;
+    return (n * 100 - r) / 100;
   }
 
 }
