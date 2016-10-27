@@ -1,8 +1,8 @@
 import { Component } from '@angular/core';
 
-import { NavController  } from 'ionic-angular';
-import { AboutPage      } from '../about/about';
-import { AppState, Item } from '../../model/model';
+import { NavController } from 'ionic-angular';
+import { AboutPage     } from '../about/about';
+import { AppState      } from '../../model/model';
 
 @Component({
   selector: 'page-home',
