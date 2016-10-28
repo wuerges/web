@@ -1,7 +1,7 @@
 <ion-header>
   <ion-navbar>
     <ion-title>
-      Contact
+      Payment
     </ion-title>
   </ion-navbar>
 </ion-header>
@@ -66,6 +66,15 @@
           </ion-badge>
         </ion-card-content>
       </ion-card>
+    </ion-card-content>
+  </ion-card>
+  <ion-card>
+    <ion-card-header>
+      Remaining unassigned items:
+    </ion-card-header>
+    <ion-card-content>
+      <div [innerHTML]="content">
+      </div>
     </ion-card-content>
   </ion-card>
 </ion-content>
