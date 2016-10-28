@@ -1,8 +1,9 @@
 import { Component } from '@angular/core';
 
-import { NavController } from 'ionic-angular';
-import { AboutPage     } from '../about/about';
-import { AppState      } from '../../model/model';
+import { NavController  } from 'ionic-angular';
+import { AboutPage      } from '../about/about';
+import { AppState       } from '../../model/model';
+import { BarcodeScanner } from 'ionic-native';
 
 @Component({
   selector: 'page-home',
@@ -40,5 +41,19 @@ export class HomePage {
   addItem() {
     this.appState.addItem(this.iname, this.iprice, this.iqty);
   }
+
+
+  scan() {
+    BarcodeScanner.scan().then(
+      (result) => { 
+        console.log("R:" + result.text); 
+        this.appState.JSONToUnass(result.text);
+      },
+      (error) => { 
+        console.log("ERROR:" + error); 
+      });
+  }
+
+
 
 }

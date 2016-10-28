@@ -254,7 +254,10 @@ export class AppState {
   }
 
   JSONToUnass(j: string) {
-    this.unassigned = JSON.parse(j);
+    let is = JSON.parse(j);
+    for (let i of is) {
+      this.addItem(i.name, i.price, i.quantity);
+    }
   }
 
   accountForTip(tip : number) {
