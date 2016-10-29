@@ -267,6 +267,6 @@ export class AppState {
         t += i.price * i.quantity;
       }
     }
-    this.addItem("Tip", t, 1);
+    this.addItem("Tip", t * tip / 100, 1);
   }
 }
